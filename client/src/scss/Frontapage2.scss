@@ -1,0 +1,105 @@
+.front-page2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two items per row */
+  gap: 0;
+  justify-content: center;
+  padding: 0; 
+}
+
+.front-page2-h2 {
+  margin-bottom: 20px;  
+}
+
+
+
+.grid-item {
+  border: 2px solid;
+  height: 300px; /* Adjust the height as necessary */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px; /* Provides depth for the flip effect */
+  cursor: pointer;
+  position: relative; /* Ensure positioning context for absolute children */
+
+  &:nth-child(odd) {
+    border-color: #fff; /* Blue for odd items*/
+  }
+
+  &:nth-child(even) {
+    border-color: #fff; /* Green for even items */
+  }
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  color: #fff;
+  position: absolute;
+  backface-visibility: hidden; /* Ensures that the back side of flipped content isn't visible */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc; /* Visual separation, adjust as necessary */
+  background: #fff; /* Background color, adjust as necessary */
+  transition: transform 0.6s ease; /* Smooth flip transition */  
+  padding: 45px;  
+}
+
+.front {
+  transform: rotateY(0deg); /* Initial state, front facing */
+  font-size: 25px;
+}
+
+.back {
+  transform: rotateY(180deg); /* Initial state, back facing away */
+}
+
+.grid-item.flipped .front {
+  transform: rotateY(-180deg); /* Flipped state, front facing away */
+}
+
+.grid-item.flipped .back {
+  transform: rotateY(0deg); /* Flipped state, back facing front */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .front-page2 {
+    grid-template-columns: 1fr; /* One item per row for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .front-page2 {
+    /* Further adjustments if needed for very small screens */
+    grid-template-columns: 1fr; /* Keeps the single column layout */
+  }
+
+  .front-page2-h2 {
+    margin-bottom: 9px;
+  }
+
+  .front, .back {
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    color: #fff;
+    position: absolute;
+    backface-visibility: hidden; /* Ensures that the back side of flipped content isn't visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #ccc; /* Visual separation, adjust as necessary */
+    background: #fff; /* Background color, adjust as necessary */
+    transition: transform 0.6s ease; /* Smooth flip transition */  
+    padding: 30px;  
+  } 
+
+  
+}

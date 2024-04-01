@@ -1,0 +1,164 @@
+.services {
+  background: linear-gradient(to bottom, #f0f0f0, #f8d7da);
+  padding-top: 50px; /* Adjust based on your navbar height */
+
+  .page-header {
+    width: 100%;
+    background: linear-gradient(to right, #003d82, #0056b3, #0074e4);
+    h1 {
+      font-size: 40px;
+      text-align: center;
+      margin: 0 auto;
+      padding: 20px 0;
+      color: #fff;
+    }
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .service-card {
+    border: 10px solid #fff;
+    position: relative;
+    height: 300px; /* Adjust based on your content */
+    cursor: pointer;
+    overflow: hidden; /* Ensure nothing spills outside the card */
+
+    .card-front, .card-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: absolute;
+      backface-visibility: hidden;
+      padding: 20px;
+    }
+
+    .card-front {
+      z-index: 2;
+      
+      h1 {
+        font-size: 50px;
+        margin-bottom: 20px; /* Ensure spacing between title and button */
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        border: 1px solid #0061c5;
+        cursor: pointer;
+      }
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      z-index: 1; /* Ensure this is below the front initially */
+      background-color: white; /* Set the background color for the flip side */
+      justify-content: space-between; /* Adjust content spacing */
+
+      h1 {
+        font-size: 50px;
+        margin-bottom: -65px;
+      }
+
+      p {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 40px;
+        text-align: left;
+        padding: 20px;
+      }
+
+      .back-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Make it round */
+        border: none;
+        background-color: #0062c7;
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 20px; /* Adjust as needed */
+      }
+      
+    }
+
+    &.flipped .card-front {
+      transform: rotateY(-180deg);
+    }
+
+    &.flipped .card-back {
+      transform: rotateY(0deg);
+      z-index: 3; /* Bring the back to the front when flipped */
+    } 
+
+  }
+}
+
+.services .service-card .card-back p {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 45px;
+    text-align: left;
+    padding: 6px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services .service-card .card-back h1 {
+    font-size: 30px;
+    margin-bottom: -65px;
+    margin-top: -20px;
+  }
+
+  .services .service-card .card-back p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 60px;
+    text-align: left;
+    padding: -20px;
+  }
+
+  .services .service-card .card-back .back-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: #0062c7;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: -20px;
+  }
+
+  .svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+    overflow: visible;
+    box-sizing: content-box;
+    margin-left: 30px;
+  }
+
+   
+
+}

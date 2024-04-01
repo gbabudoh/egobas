@@ -1,0 +1,67 @@
+.industries {
+  padding-top: 57px; /* Adjust based on your navbar's height */
+
+  .industries-image-insert {
+      width: 90px;
+      height: auto;
+      border-radius: 9px;
+      border: 1px solid #a19d9d;
+  }
+
+  &__title {
+    background: linear-gradient(to right, #003d82, #0056b3, #0074e4);
+    font-size: 40px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Spacing between the title and grid */
+    padding: 20px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 1rem;
+    width: calc(100% - 2rem); /* Adjusts width for the gap */
+    margin: 0 auto; /* Centers the grid */
+    margin-bottom: 20px;  
+  }
+
+  &__grid__item {
+    background: #fff;
+    border: 1px solid #ded4d4;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h3 {
+      margin-top: 0.5rem; /* Reduced space between the image and the h3 tag */
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .industries__grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .industries__grid {
+      grid-template-columns: 1fr; /* Single column for mobile screens */
+  }
+
+  .industries {
+    padding-top: 39px;
+}
+
+}

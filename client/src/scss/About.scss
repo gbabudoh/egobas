@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  
+}
+
+.about {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f0f0f0, #f8d7da);
+
+  .page-banner {
+    width: 100%;    
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 55px;
+    background: linear-gradient(to right, #003d82, #0056b3, #0074e4);
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .left-column {
+    border: 4px solid white;
+    border-radius: 10px;
+  }
+
+  .left-column-h1 {
+    padding: 10px;
+    margin-bottom: -20px; 
+  }
+
+  .about-left-column-p {
+    padding: 10px;
+    font-size: 19px;
+  }
+
+  .right-column img {
+    border-bottom-right-radius: 60%;
+    border-start-start-radius: 9px;
+    border-start-end-radius: 9px;
+    border-bottom-left-radius: 9px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+
+    .left-column, .right-column {
+      flex: 1;
+      padding: 10px;
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        margin-top: 20px;
+      }
+    }
+
+    .right-column {
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .single-grid-column {
+    margin: 20px auto;
+    padding: 20px;
+    width: calc(100% - 40px); // Adjusts for padding
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-image: linear-gradient(180deg, #ffffff, #f9f9f9);
+    text-align: center;
+  }
+  
+  .grid-container {
+    display: flex; // Use flexbox for the grid
+    margin-top: 20px; // Space between the h1 and the grid columns
+  }
+
+  .image-hisroty {
+    border-radius: 8px;    
+  }
+
+  .left-column-second-child-h2 {
+    padding: 8px;
+    font-size: 40px;
+  }
+  .left-column-second-child-p {
+    text-align: left;
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  
+  .grid-column {
+    flex: 1; // Ensure equal width
+    &:first-child { // Styles for the left column
+      margin-right: 10px; // Space between the columns
+    }
+    &:last-child { // Styles for the right column
+      /*border: 1px solid; // Solid border*/
+      border-radius: 8px;
+      background-image: linear-gradient(135deg, rgba(170, 212, 246, 0.8), rgba(246, 248, 251, 0.8)); // Light sky blue gradient background
+      padding: 10px; // Padding inside the column for the content
+    }
+  }  
+  
+
+  .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatAround 20s infinite ease-in-out;
+      opacity: 0.4;
+
+      &.big {
+        width: 60px;
+        height: 60px;
+      }
+
+      &.small {
+        width: 30px;
+        height: 30px;
+      }
+
+      &:nth-child(odd) {
+        background-color: rgba(255, 192, 203, 0.4); // Light pink
+      }
+      &:nth-child(4n) {
+        background-color: rgba(255, 255, 224, 0.4); // Light yellow
+      }
+      &:nth-child(3n) {
+        background-color: rgba(135, 206, 235, 0.4); // Light sky blue
+      }
+      &:nth-child(5n) {
+        background-color: rgba(211, 211, 211, 0.4); // Light grey
+      }
+    }
+  }
+
+  @keyframes floatAround {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(100px, -100px); }
+    50% { transform: translate(200px, 100px); }
+    75% { transform: translate(-100px, 200px); }
+  }
+}
+
+// Responsive design adjustments with margin handling
+@media (max-width: 992px) {
+  .about .page-banner {
+    margin-top: 39px;
+  }
+
+  .about h1 {
+    font-size: 30px;
+  }
+
+  .about p {
+    font-size: 16px;
+  }
+
+  .about .content {
+    flex-direction: column;
+
+    .left-column, .right-column {
+      width: auto;
+      margin: 0 20px;
+      padding: 10px;
+    }
+  }
+
+  .about .grid-container {
+    flex-direction: column;
+  }
+
+  .about .grid-column {
+    &:first-child {
+      margin-right: 0;
+      margin-bottom: 20px; // Adds space between the columns when they stack
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about .page-banner, .about h1, .about p {
+    font-size: 16px;
+  }
+
+  .about .content .left-column, .about .content .right-column {
+    margin: 0 30px;
+  }
+
+
+  .about .grid-container {
+    flex-direction: column;
+  }
+
+  .about .grid-column {
+    &:first-child {
+      margin-bottom: 20px; // Adjust spacing between the stacked columns
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about .content {
+    margin: 10px 0;
+  }
+
+  .about .page-banner, .about h1, .about p {
+    font-size: 14px;
+  }
+
+  .about .content .left-column, .about .content .right-column {
+    margin: 0 10px;
+  }
+
+  .about .grid-container {
+    flex-direction: column;
+  }
+
+  .about .grid-column {
+    &:first-child {
+      margin-bottom: 20px; // Ensure spacing is consistent on very small screens
+    }
+  }
+}

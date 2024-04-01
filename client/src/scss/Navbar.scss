@@ -1,0 +1,135 @@
+/* Global styles to prevent body content from hiding behind the fixed navbar */
+body, html {
+  margin: 0;
+  padding-top: 20px; /* Adjust based on the navbar's height to prevent content from being hidden */
+  box-sizing: border-box;
+}
+
+/* Base layout and styles for the navbar */
+.navbar-container {
+  position: fixed; /* Fixed position to keep navbar at top */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  z-index: 100; /* Ensure navbar is above other content */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+  /* background: linear-gradient(to right, white, lightpink);*/
+}
+
+.navbar-logo img {
+  height: auto; // Keeps the aspect ratio of the image
+  width: 145px; // Adjust this value to scale the logo size down
+}
+
+.svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box; 
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  margin-left: 50px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px; /* Spacing between links */
+
+  a {
+    text-decoration: none;
+    color: #000; /* Link text color */
+    /*font-weight: bold; /* Optional: adds emphasis to link text */
+  }
+}
+
+.navbar-client-login {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;  
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Hamburger icon for mobile view */
+.navbar-hamburger {
+  display: none; /* Hidden by default, shown in mobile view */
+  cursor: pointer;
+  /* Styling for the hamburger icon can be added here */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    
+
+    .navbar-logo, .navbar-client-login {
+      flex: 1;
+    }
+
+    .navbar-logo img {
+      height: auto; // Keeps the aspect ratio of the image
+      width: 90px; // Adjusts the logo size for mobile devices
+    }  
+
+    .navbar-logo {
+      width: 50px;
+    }
+
+    .navbar-hamburger {
+      display: block; /* Show hamburger icon */
+      flex: 1;
+      /*text-align: right; /* Align hamburger icon to the right */
+      font-size: 30px;
+    }
+
+    .svg-inline--fa {
+      display: var(--fa-display, inline-block);
+      height: 1em;
+      overflow: visible;
+      vertical-align: -0.125em;
+      margin-right: 30px;
+    }
+
+    .navbar-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      background-color: #fff;
+      width: 100%; /* Full width */
+      transform: translateX(100%); /* Hide off-screen */
+      transition: transform 0.3s ease-in-out;
+      height: 100vh;
+      padding: 40px;
+
+      &.show {
+        transform: translateX(0); /* Show menu */
+      }
+
+      a {
+        padding: 10px;
+        border-bottom: 1px solid #eee; /* Separates each link */
+        text-align: center;
+      }   
+
+    }
+  }
+}

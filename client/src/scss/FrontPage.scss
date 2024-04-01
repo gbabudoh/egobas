@@ -1,0 +1,204 @@
+/* Base layout and styles */
+
+.front-page {
+    background: linear-gradient(to right, lightgrey, #f38d9d);
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* To ensure bubbles move within the confines of the front-page */
+    
+    
+  
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 90%;
+      margin: auto;
+      position: relative;
+  
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start; /* Align text to the left */
+      }
+  
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .front-page-h1, .front-page-h2, p {
+        text-align: left;
+        width: 100%; /* Ensure text elements span the full width of the column */
+      }
+  
+      .front-page-h1 {
+        font-size: 90px;
+        font-weight: 900;
+      }
+  
+      .front-page-h2 {
+        font-size: 30px;
+        font-weight: 500;
+      }
+      .front-page-p {
+        margin-top: 10px;
+        font-size: 20px;
+      }
+      
+  
+      .rotating-circle {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 1px solid #888484;
+        animation: rotate 20s infinite linear;
+  
+        .circle-ball {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background-color: #333;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 0.8em;
+          border: 5px solid;
+          &:nth-child(1) { animation: colorChange1 10s infinite; }
+          &:nth-child(2) { animation: colorChange2 12s infinite; }
+          &:nth-child(3) { animation: colorChange3 14s infinite; }
+          &:nth-child(4) { animation: colorChange4 16s infinite; }
+          &:nth-child(5) { animation: colorChange5 18s infinite; }
+          &:nth-child(6) { animation: colorChange6 20s infinite; }
+        }
+      }
+    }
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 14px;
+    margin-bottom: 45px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+  
+  /* Animations for rotating circle and color changes */
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes colorChange1 { 0%, 100% { background-color: grey; } 50% { background-color: darkpink; } }
+  @keyframes colorChange2 { 0%, 100% { background-color: gold; } 50% { background-color: darkgreen; } }
+  @keyframes colorChange3 { 0%, 100% { background-color: darkblue; } 50% { background-color: orange; } }
+  @keyframes colorChange4 { 0%, 100% { background-color: orange; } 50% { background-color: grey; } }
+  @keyframes colorChange5 { 0%, 100% { background-color: darkpink; } 50% { background-color: gold; } }
+  @keyframes colorChange6 { 0%, 100% { background-color: darkgreen; } 50% { background-color: darkblue; } }
+  
+  /* Styles for typing effect */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+  }
+  
+  .typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+  }
+  
+  /* Bubble animations for movement */
+  @keyframes moveBubble {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-20px, -20px); }
+    50% { transform: translate(20px, -40px); }
+    75% { transform: translate(-15px, -30px); }
+    100% { transform: translate(0, 0); }
+  }
+  
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: moveBubble linear infinite;
+    animation-duration: var(--animation-duration); /* Dynamically assigned in JSX */
+    animation-delay: var(--animation-delay); /* Dynamically assigned in JSX */
+  }
+  
+  @media only screen and (max-width: 768px) {
+
+    .front-page .grid-container {
+      grid-template-columns: 1fr;
+      gap: 30px; // Adjust gap for visual separation
+  
+      .left-column, .right-column {
+        align-items: center; // Center-align for smaller screens
+        height: auto; // Ensure content size adjusts dynamically
+      }       
+ 
+      
+      // Adjust the positioning of the left column to bring the button to the top
+      .left-column {
+        order: 1; // Ensure the left column (and thus the button) appears first
+        padding-top: 20px; // Add some padding at the top for spacing
+      }
+  
+      // Adjustments for the right column to follow the left column
+      .right-column {
+        order: 2; // Ensures that the circle animation appears after the button
+        margin-top: 0px; // Adjust this value as necessary
+      }
+  
+      .front-page-h1, .front-page-h2, .front-page-p {
+        text-align: center; // Center-align text for a cohesive look on smaller screens
+      }
+  
+      .front-page-h1 {
+        font-size: 26px; // Adjust the font size for smaller screens
+        margin-top: 0px; // Ensure there's no excessive spacing
+      }
+  
+      .cta-button {
+        display: block; // Ensure the button is properly displayed
+        width: auto; // Adjust width to fit content
+        margin: 0 auto; // Center the button
+        margin-bottom: 20px; // Provide some spacing below the button
+        margin-top: 11px;
+      }
+  
+    }    
+  
+  }
+  

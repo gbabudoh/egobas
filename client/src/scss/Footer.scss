@@ -1,0 +1,83 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap; /* Allow footer columns to wrap to the next line */
+  justify-content: center; /* Center the footer horizontally */
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #ffffff); /* Light grey gradient glossy background */
+  color: #000;
+
+  .footer-column {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text content horizontally */
+    border: 1px solid #aeaaaa;
+    padding: 20px;
+    border-radius: 6px;
+   
+
+    h3 {
+      margin-bottom: 10px;
+      text-align: left; /* Left-align heading */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: left; /* Left-align list items */
+     
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center social icons horizontally */
+      margin: 10px;
+    }
+
+    .footer-service-link {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .footer-email-link {
+      text-decoration: none;
+      color: #000;
+    }
+    
+    .social-icons svg {
+      font-size: 18px; /* Increase icon size */
+      margin-right: 20px; /* Add margin between icons */
+      color: #555353;
+    }
+  }
+
+  .copyright {
+    width: 100%; /* Full width */
+    text-align: center; /* Center the copyright message */
+    margin-top: 20px; /* Add margin to separate from other content */
+    border-top: 1px solid #ccc; /* Add border above the copyright message */
+    padding-top: 10px; /* Add padding above the copyright message */
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    /* Adjust layout for smaller screens */
+    flex-direction: column; /* Stack columns vertically */
+    align-items: center; /* Center items vertically */
+    text-align: center; /* Center text content */
+    
+    .footer-column {
+      margin-right: 0; /* Remove right margin for better spacing */
+      margin-bottom: 20px; /* Add bottom margin between columns */
+      width: 100%;
+    }
+  }
+}
+
+  
